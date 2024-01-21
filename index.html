@@ -1,0 +1,538 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>oTree</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/custom.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Customized theme -->
+	<link rel="stylesheet" href="css/custom.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<section>
+					<h2>Enquêtes en ligne avec oTree</h2>
+					<p>
+						Dimitri Dubois<br>
+						<a href="mailto: dimitri.dubois@umontpellier.fr">dimitri.dubois@umontpellier.fr</a>
+					</p>
+					<img src="img/cnrs.png" style="height: 100px;">
+					<img src="img/um.png" style="height: 100px;">
+				</section>
+				<section>
+					<h3>
+						Contenu
+					</h3>
+					<ul>
+						<li><a href="#intro">Introduction</a></li>
+						<li><a href="#installation">Installation</a></li>
+						<li><a href="#creation">Création d'une application</a></li>
+						<li><a href="#boucles">Structure conditionnelle et boucle</a></li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- INTRODUCTION -->
+			<section id="intro">
+				<section>
+					<h2>Introduction</h2>
+				</section>
+				<section>
+					<ul>
+						<li>Plateforme open-source permettant de développer des systèmes de collecte de données par
+							enquête ou expérimentations</li>
+						<li>Beaucoup utilisée dans les sciences sociales</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Site web: <a href="https://www.otree.org/" target="_blank">https://www.otree.org/</a></li>
+						<li>Documentation: <a href="https://otree.readthedocs.io/en/latest/"
+								target="_blank">https://otree.readthedocs.io/en/latest</a></li>
+						<li>
+							Citation: <br>
+							Chen, D.L., Schonger, M. & Wickens, C., 2016, "oTree - An open-source platform for
+							laboratory,
+							online, and field experiments", Journal of Behavioral and Experimental Finance 9, pp. 88-97
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Adaptation automatique de l'interface à l'appareil utilisé</li>
+						<li>Design des interfaces simple et esthétique</li>
+					</ul>
+					<img src="img/otree_devices.png" style="width: 75%;">
+				</section>
+				<section>
+					<ul>
+						<li>Fonctionne selon le modèle client / serveur</li>
+						<li>Le client est l'appareil du participant</li>
+						<li>Le serveur est l'ordinateur sur lequel est installé oTree</li>
+						<li>Le client se connecte au serveur avec un navigateur web</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						Au niveau des langages
+					</p>
+					<ul>
+						<li>Python: fonctions, variables enregistrées etc.</li>
+						<li>HTML / CSS: interface graphique</li>
+						<li>Javascript: dynamique des pages</li>
+					</ul>
+					<figure style="width: 75%;">
+						<img src="img/python.png" style="height: 150px;">
+						<img src="img/html.jpg" style="height: 150px;">
+					</figure>
+				</section>
+				<section>
+					<p>
+						Peut être utilisé pour collecter des données
+					</p>
+					<table>
+						<tr>
+							<td>En laboratoire</td>
+							<td>Sur le terrain</td>
+							<td>Sur Internet</td>
+						</tr>
+						<tr>
+							<td><img src="img/leem.jpg" alt="En laboratoire"></td>
+							<td><img src="img/field.jpg" alt="Sur le terrain"></td>
+							<td><img src="img/internet.png" alt="Sur Internet"></td>
+						</tr>
+					</table>
+				</section>
+			</section>
+
+			<!-- INSTALLATION -->
+			<section id="installation">
+				<section>
+					<h2>Installation</h2>
+				</section>
+				<section>
+					<ul>
+						<li>Anaconda pour l'environnement Python<br>
+							<a href="https://www.anaconda.com/" target="_blank">https://www.anaconda.com</a> <br>
+							<img src="img/anaconda.png" style="height: 100px;">
+						</li>
+						<li>PyCharm pour l'IDE Python <br>
+							<a href="https://www.jetbrains.com/fr-fr/pycharm/"
+								target="_blank">https://www.jetbrains.com/fr-fr/pycharm</a><br>
+							<img src="img/pycharm.png" style="height: 100px;">
+
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Anaconda</h3>
+					<ul>
+						<li>Dans Anaconda Navigator, créer un nouvel environnement, <code>otree_env</code> par exemple
+						</li>
+						<li>Sélectionner Python 3.11</li>
+						<li>Après la création de l'environnement, ouvrir un terminal dans cet environnement (flèche
+							verte)</li>
+						<li>Installer otree: <code>pip install otree</code></li>
+						<li>Après l'installation se déplacer avec <code>cd</code> à l'emplacement pour souhaiter pour le
+							projet otree</li>
+						<li>Une fois dans le dossier, créer un projet otree avec <br>
+							<code>otree startproject otree_proj</code><br>
+							où otree_proj est le nom du projet (ne pas l'appeler otree)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>PyCharm</h3>
+					<ul>
+						<li>Créer un nouveau projet</li>
+						<li>Le chemin du projet doit pointer vers le dossier au dessus du projet otree</li>
+						<li>Le nom du projet est le nom du dossier du projet otree (<code>otree_proj</code>)</li>
+						<li>Au niveau de l'interpréteur, sélectionner <code>Custom environment</code>, puis
+							<code>Select existing</code>, type <code>conda</code> et dans "Path to conda" renseigner le
+							chemin vers <code>anaconda3/bin/conda</code> (chemin qui dépend du dossier d'installation
+							d'Anaconda). Environment va alors afficher la liste des environnements disponibles,
+							sélectionner celui créé au départ (<code>otree_env</code>)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Pratique</h3>
+					<ul>
+						<li>Installer Anaconda, créer l'environnement <code>otree_env</code> et y installer otree</li>
+						<li>Créer le projet oTree <code>otree_proj</code></li>
+						<li>Installer PyCharm</li>
+						<li>Créer un projet PyCharm en chargeant le projet <code>otree_proj</code></li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- CREATION APPLICATION -->
+			<section id="creation">
+				<section>
+					<h2>Création d'une application</h2>
+				</section>
+				<section>
+					<ul>
+						<li>Dans le terminal de PyCharm: <code>otree startapp nom_application</code><br>
+							où nom_application est le nom de l'application, par exemple questionnaire_démographique</li>
+						<li>La commande va créer un dossier au nom de l'application, et dans ce dossier 1 fichier Python
+							(<code>__init__.py</code>) et 2 fichiers html (<code>MyPage.html</code> et
+							<code>Results.html</code>)
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Le fichier Python</h3>
+					<ul>
+						<li>1 classe pour les paramètres (<code>class C</code>)</li>
+						<li>1 classe pour les variables et fonctions qui s'appliquent à tous les participants
+							(<code>class Subsession</code>)</li>
+						<li>1 classe pour les variables et fonctions qui s'appliquent à tous les participants d'un même
+							groupe (<code>class Group</code>)</li>
+						<li>1 classe pour les variables et fonctions qui s'appliquent à chaque participant
+							individuellement (<code>class Player</code>)</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						Après le <code># Pages</code>, ce sont les classes qui vont faire le lien avec les fichiers
+						*.html
+					</p>
+					<ul>
+						<li>A chaque fichier *.html doit correspondre une classe avec exactement le même nom. Par
+							exemple pour le fichier <code>MyPage.html</code> il y la classe
+							<code>class MyPage(Page)</code>
+						</li>
+						<li>Pour chaque nouvelle page, il faut donc créer la classe et le fichier html correspondant
+						</li>
+					</ul>
+					<p>
+						En bas du fichier pyton, il y a la liste <code>page_sequence = []</code>. Cette liste donne la
+						séquence d'affichage des pages dans l'application.
+					</p>
+				</section>
+				<section>
+					<h3>La classe C</h3>
+					<ul>
+						<li>Comporte les constantes, c'est à dire les variables qui ne changent pas</li>
+						<li><code>NAME_IN_URL</code>: ce qui apparaître dans l'URL</li>
+						<li><code>PLAYERS_PER_GROUP</code>: nombre de participants par groupe. None si pas de groupes.
+						</li>
+						<li><code>NUM_ROUNDS</code>: nombre de rounds. Pas utile pour les questionnaires.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>La classe Player</h3>
+					<ul>
+						<li>Création des variables que le participant va renseigner.</li>
+						<li>Ces variables ou attributs de la classe, vont être créés par oTree dans une base de données.
+						</li>
+						<li>Pour chaque variable il va falloir spécifier son type</li>
+						<li>Types disponibles:
+							<ul>
+								<li>IntergerField: pour les nombres entiers</li>
+								<li>FloatField: pour les nombres décimaux</li>
+								<li>StringField: pour les chaînes de caractères</li>
+								<li>BooleanField: pour les booléens</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Ces différents types sont dans le module <code>models</code></li>
+						<li>Il faut donc faire précéder le type par <code>models.</code></li>
+					</ul>
+					<p>
+						<code>annee_naissance = models.IntegerField()</code>
+					</p>
+				</section>
+				<section>
+					<p>
+						Lors de l'instanciation des champs (attributs/variables) il est possible de passer quelques
+						arguments
+					</p>
+					<ul>
+						<li><code>label=le_label</code>: le texte affiché à côté du widget.</li>
+						<li>Pour les IntegerField et FloatField: <code>min</code> et <code>max</code>.</li>
+						<li><code>blank=True</code>: si le champs n'est pas obligatoire.</li>
+						<li><code>choices=[]</code>: la liste des choix proposés.</li>
+						<li><code>widget=le_widget</code>: pour changer de widget.</li>
+						<li><code>initial=valeur_initiale</code>: pour mettre une valeur de départ.</li>
+					</ul>
+				</section>
+				<section>
+					<p style="font-weight: bold;">Exemples</p>
+					<p>
+						<code>
+							annee_naissance = models.IntegerField( <br>
+								label="Votre année de naissance", <br>
+								choices=list(range(2024, 1923, -1)))
+						</code>
+					</p>
+					<p>
+						<code>
+							sexe = models.StringField( <br>
+							label="Sexe", choices=["Féminin", "Masculin"], <br>
+							widget=widgets.RadioSelectHorizontal)
+						</code>
+					</p>
+				</section>
+				<section>
+					<p>
+						La liste de choix (choices=[]) peut aussi être une liste de tuples de taille 2. Dans ce cas le
+						1er élément correspond à ce qui est enregistré dans le champs/variable/attribut, et le second ce
+						qui est affiché à l'écran.
+					</p>
+					<ul>
+						<li>Permet d'avoir la même chose enregistrée dans la base de données, même si l'affichage est en
+							différentes langues.</li>
+						<li>Souvent pratique pour l'analyse de données d'avoir des données codées au préalable.</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						<code>
+							sexe = models.IntegerField( <br>
+							label="Sexe", choices=[(0, "Féminin"), (1, "Masculin")], <br>
+							widget=widgets.RadioSelectHorizontal)
+						</code>
+					</p>
+					<ul>
+						<li>On a codé 0 pour Féminin et 1 pour masculin.</li>
+						<li>Le type du champs a été changé, c'est maintenant un IntegerField</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Les widgets</h3>
+					<ul>
+						<li>Si une liste de choix est proposée alors une liste déroulante par défaut</li>
+						<li>S'il n'y a pas trop d'éléments, cette liste peut être remplacée par des boutons radio <br>
+							<img src="img/radioButton.png">
+						</li>
+						<li><code>widget=widgets.RadioSelect</code> pour des boutons radio verticaux</li>
+						<li><code>widget=widgets.RadioSelectHorizontal</code> pour des boutons radio horizontaux</li>
+					</ul>
+				</section>
+				<section>
+					<p>Pour les champs de type BooleanField, possible de créer une case à cocher.</p>
+					<p>
+						<code>
+							etudiant = models.BooleanField( <br>
+							label="Etudiant(e)", 
+							widget=widgets.CheckboxInput, 
+							blank=True, initial=False)
+						</code>
+					</p>
+					<img src="img/checkbox.png">
+					<p>
+						Il faut ajouter les arguments blank=True pour que le participant puisse ne pas cocher le widget,
+						et initial=False, pour que la valeur False soit enregistrée dans le champs si le participant ne
+						coche pas la case.
+					</p>
+				</section>
+				<section>
+					<h3>Pratique</h3>
+					<ul>
+						<li>Créer une application <code>questionnaire_demographique</code></li>
+						<li>Dans la classe Player, créer les champs suivants:
+							<ul>
+								<li>annee_naissance</li>
+								<li>sexe</li>
+								<li>statut_marital (célibataire, marié(e), divorcé(e), veuf(ve))</li>
+								<li>etudiant</li>
+								<li>diplome (brevet, bac, licence, master, doctorat)</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Les pages html</h3>
+					<ul>
+						<li>Un fichier html = 1 classe Python qui hérite de <code>Page</code></li>
+						<li>Une page qui collecte des valeurs pour des champs doit avoir les deux attributs suivants:
+							<br>
+							<code>
+							form_model = "player" <br>
+							form_fields = []
+						</code> <br>
+							form_fields doit contenir la liste des champs
+						</li>
+					</ul>
+				</section>
+				<section>
+					<p style="font-weight: bold;">Exemple</p>
+					<p>
+						<code>
+							class Questionnaire(Page): <br>
+							&nbsp;&nbsp;form_model = "player" <br>
+							&nbsp;&nbsp;form_fields = ["annee_naissance", "sexe"]
+						</code>
+					</p>
+					<p>
+						Les champs annee_naissance et sexe seront affichés sur l'écran de la page Questionnaire.html
+					</p>
+				</section>
+				<section>
+					<h3>Les fichiers html</h3>
+					<ul>
+						<li>Par defaut affichent les champs de <code>form_fields</code>.</li>
+						<li>Grâce à <code>{{ formfields }}</code> qui est dans le code html.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Le fichier settings.py</h3>
+					<ul>
+						<li>Contient le paramétrage du serveur.</li>
+						<li><code>LANGUAGE_CODE</code>: langue du serveur (mettre "fr")</li>
+						<li><code>SESSION_CONFIGS</code>: liste qui contient les enquêtes qui peuvent être lancées.</li>
+						<li>Chaque élément de la liste doit être un dictionnaire avec les clés suivantes: <br>
+							name, display_name, num_demo_participants, app_sequence
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>name: nom de l'enquête.</li>
+						<li>display_name: nom affiché sur la page du serveur.</li>
+						<li>num_demo_participants: nombre de participants pour tests.</li>
+						<li>app_sequence: liste des applications qui composent l'enquête.</li>
+					</ul>
+				</section>
+				<section>
+					<p>
+						<code>
+							SESSION_CONFIGS = [ <br>
+							&nbsp;&nbsp;dict( <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;name="demog", <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;display_name="Questionnaire démographique", <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;num_demo_participants=5, <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;app_sequence=["questionnaire_demographique"] <br>
+							&nbsp;&nbsp;) <br>
+							]
+						</code>
+					</p>
+				</section>
+				<section>
+					<p>
+						Lorsque l'enquête a été ajoutée dans la liste des SESSION_CONFIGS, le serveur peut être démarré
+						pour tester l'application: <br>
+						<code>otree devserver</code> dans le terminal de PyCharm.
+					</p>
+					<p>
+						Ensuite ouvrir le navigateur et taper: <code>http://localhost:8000</code> dans la barre
+						d'adresse.
+					</p>
+				</section>
+				<section>
+					<h3>Pratique</h3>
+					<ul>
+						<li>Ajouter l'enquête dans le fichier settings.</li>
+						<li>Démarrer le serveur.</li>
+						<li>Test l'application questionnaire_demographique.</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- Structure conditionnelles et boucles -->
+			<section id="boucles">
+				<section>
+					<h2>Structure conditionnelle et boucle dans le HTML</h2>
+				</section>
+				<section>
+					<ul>
+						<li>Dans le fichier HTML, oTree écrit par défaut <code>{{ formfields }}</code></li>
+						<li>Possible de mettre en forme le formulaire, dans un tableau par exemple, en utilisant une
+							boule for.</li>
+						<li><code>{{ for field in form }} ... {{ endfor }}</code></li>
+						<li>Va permettre d'ajouter une ligne pour chaque champs dans un tableau.</li>
+					</ul>
+					<p style="font-size: 0.8em;">
+						<code>
+							&lt;table class=&quot;table&quot;&gt; <br> 
+							&nbsp;&nbsp;{{ for field in form }} <br>
+							&nbsp;&nbsp;&lt;tr&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ field.label }}&lt;/td&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;{{ field }}&lt;/td&gt; <br>
+							&nbsp;&nbsp;&lt;/tr&gt; <br>
+							&nbsp;&nbsp;{{ endfor }} <br>
+							&lt;/table>
+						</code>
+					</p>
+				</section>
+				<section>
+					<p>Autre possibilité, qui s'appuie sur les objets CSS de la libraire bootstrap utilisée par oTree.
+					</p>
+					<p style="font-size: 0.8em;">
+						<code>
+							{{ for field in form }} <br>
+							&nbsp;&nbsp;&lt;div class='card bg-light mb-2'&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;{{ field.label }} &lt;br&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;{{ field }} <br>
+							&nbsp;&nbsp;&lt;/div&gt; <br>
+							{{ endfor }} <br>
+						</code>
+					</p>
+				</section>
+				<section>
+					<h3>Pratique</h3>
+					<ul>
+						<li>Essayez les deux méthodes (table et card) de mise en forme du questionnaire.</li>
+						<li>Conservez celle que vous préférez.</li>
+					</ul>
+					<p><u>Remarque</u>: <code>{{ comment }}</code> ... <code>{{ endcomment }}</code> permet de commenter du
+						code dans le fichier html. Donc conservez les deux versions mais commentez celle que vous aimez
+						le moins.</p>
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			hash: true,
+			history: true,
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/math/math.js', async: true }
+			],
+			math: {
+				mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+				config: 'TeX-AMS_HTML',
+			}
+		});
+		Reveal.configure({
+			slideNumber: 'c/t'
+		});
+	</script>
+</body>
+
+</html>

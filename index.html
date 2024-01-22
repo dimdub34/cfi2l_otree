@@ -50,6 +50,7 @@
 						<li><a href="#boucles">Boucle for dans le fichier html</a></li>
 						<li><a href="#affichage_conditionnel">Affichage conditionnel</a></li>
 						<li><a href="#tests">Tests de l'application</a></li>
+						<li><a href="#field_dynamics">Paramétrage dynamique des champs</a></li>
 						<li><a href="#acces_javascript">Accès aux widgets en Javascript</a></li>
 					</ul>
 				</section>
@@ -572,7 +573,8 @@
 					<h3>before_next_page et timeout_happened</h3>
 					<ul>
 						<li>Méthode à placer dans la classe Page.</li>
-						<li><code>timeout_happened</code> est un évènement qui est déclenché quand le temps est imparti, lorsqu'il y a un compte à rebours.</li>
+						<li><code>timeout_happened</code> est un évènement qui est déclenché quand le temps est imparti,
+							lorsqu'il y a un compte à rebours.</li>
 						<li>On utilise ce déclenchement pour les tests.</li>
 						<li>On va attribuer des valeurs (aléatoires) à chacun des champs de la page.</li>
 					</ul>
@@ -588,15 +590,53 @@
 				</section>
 				<section>
 					<ul>
-						<li>Dans l'onglet Monitor, le bouton "Advance slowest user(s) déclenche un "timeout_happened".</li>
+						<li>Dans l'onglet Monitor, le bouton "Advance slowest user(s) déclenche un "timeout_happened".
+						</li>
 						<li>Ce déclenchement généère des valeurs aléatoires pour les champs des pages.</li>
+						<li>Permet de voir les pages, sans avoir à les remplir pour générer des données.</li>
+						<li>Permet de vérifier que les données sont bien dans la base de données (onglet Data), et de
+							les télécharger si besoin, pour
+							préparer les analyses.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Sur page web de l'interface de gestion d'oTree (localhost:8000), créer une nouvelle démo et
+							ensuite cliquer sur l'onglet Monitor.</li>
+						<li>Dans la page Monitor, cliquer sur le bouton "Advance slowest user(s)</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Fichiers tests.py</h3>
+					<ul>
+						<li>Création d'un fichier tests.py dans le dossier de l'application.</li>
+						<li>Ajouter les lignes suivantes: <br>
+							<code>
+							from . import * <br><br>
+							class PlayerBot(Bot): <br>
+							&nbsp;&nbsp;def play_round(self): <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;yield Submission(Questionnaire, timeout_happened=True) <br>
+						</code>
+						</li>
+						<li>La classe PlayerBot hérite de la classe Bot.</li>
+						<li>La méthode play_round va être appelée lors des tests.</li>
+						<li>yield Submission soumet la page, en déclenchant l'évènement timeout_happened.</li>
+					</ul>
+				</section>
+				<section>
+					<ul>
+						<li>Dans le terminal, écrire <code>otree test demog</code> pour tester demog.</li>
+						<li><code>otree test demog 100</code> pour tester avec 100 participants.</li>
+						<li><code>otree test demog 100 --export chemin\dossier</code> pour exporter les données générées
+							dans dossier.</li>
 					</ul>
 				</section>
 			</section>
 
 
 			<!-- PARAMETRAGE DYNAMIQUE DES CHAMPS -->
-			<section id="field_dyanmics">
+			<section id="field_dynamics">
 				<section>
 					<h2>Paramétrage dynamique des champs</h2>
 				</section>

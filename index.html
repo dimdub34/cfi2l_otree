@@ -253,7 +253,7 @@
 						<li>Pour chaque variable il va falloir spécifier son type</li>
 						<li>Types disponibles:
 							<ul>
-								<li>IntergerField: pour les nombres entiers</li>
+								<li>IntegerField: pour les nombres entiers</li>
 								<li>FloatField: pour les nombres décimaux</li>
 								<li>StringField: pour les chaînes de caractères</li>
 								<li>BooleanField: pour les booléens</li>
@@ -489,10 +489,12 @@
 					<p style="font-size: 0.8em;">
 						<code>
 							{{ for field in form }} <br>
-							&nbsp;&nbsp;&lt;div class='card bg-light mb-2'&gt; <br>
-							&nbsp;&nbsp;&nbsp;&nbsp;{{ field.label }} &lt;br&gt; <br>
-							&nbsp;&nbsp;&nbsp;&nbsp;{{ field }} <br>
+							&nbsp;&nbsp;&lt;div class='card mb-2'&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class='card-body'&gt;
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ field.label }} &lt;br&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ field }} <br>
 							&nbsp;&nbsp;&lt;/div&gt; <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt; <br>
 							{{ endfor }} <br>
 						</code>
 					</p>

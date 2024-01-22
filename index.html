@@ -572,6 +572,24 @@
 					<h3>before_next_page et timeout_happened</h3>
 					<ul>
 						<li>Méthode à placer dans la classe Page.</li>
+						<li><code>timeout_happened</code> est un évènement qui est déclenché quand le temps est imparti, lorsqu'il y a un compte à rebours.</li>
+						<li>On utilise ce déclenchement pour les tests.</li>
+						<li>On va attribuer des valeurs (aléatoires) à chacun des champs de la page.</li>
+					</ul>
+					<p>
+						<code>
+							def before_next_page(player: Player, timeout_happened): <br>
+							&nbsp;&nbsp;if timeout_happened:  <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;player.sexe = random.randint(0, 1) <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;player.age = random.choice(list(range(2024, 1923, -1))) <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;player.statut_marital = random.randint(0,4) <br>
+						</code>
+					</p>
+				</section>
+				<section>
+					<ul>
+						<li>Dans l'onglet Monitor, le bouton "Advance slowest user(s) déclenche un "timeout_happened".</li>
+						<li>Ce déclenchement généère des valeurs aléatoires pour les champs des pages.</li>
 					</ul>
 				</section>
 			</section>

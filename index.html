@@ -48,8 +48,7 @@
 						<li><a href="#installation">Installation</a></li>
 						<li><a href="#creation">Création d'une application</a></li>
 						<li><a href="#boucles">Boucle for dans le fichier html</a></li>
-						<li><a href="#affichage_conditionnel">Affichage conditionnel d'une page</a></li>
-						<li><a href="#affichage_conditionnel">Affichage conditionnel d'une page</a></li>
+						<li><a href="#affichage_conditionnel">Affichage conditionnel</a></li>
 						<li><a href="#acces_javascript">Accès aux widgets en Javascript</a></li>
 						<li><a href="#tests">Tests de l'application</a></li>
 					</ul>
@@ -514,15 +513,51 @@
 			<!-- IS_DISPLAYED -->
 			<section id="affichage_conditionnel">
 				<section>
-					<h2>Affichage conditionnel d'une page</h2>
+					<h2>Affichage conditionnel</h2>
 				</section>
 				<section>
-					<h3>is_displayed</h3>
+					<h3>D'un champs</h3>
 					<ul>
+						<li>Méthode <code>get_form_fields</code>.</li>
+						<li>Méthode à placer dans la classe d'une page.</li>
+						<li>Doit renvoyer la liste des champs.</li>
+					</ul>
+					<p>
+						<code>
+							def get_form_fields(player: Player): <br>
+							&nbsp;&nbsp;if player.etudiant: <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;return ["study_discipline"] <br>
+							&nbsp;&nbsp;else:  <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;return ["social_professional_status"] <br>
+						</code>
+					</p>
+				</section>
+				<section>
+					<h3>D'une page</h3>
+					<ul>
+						<li>Methode <code>is_displayed(player: Player)</code></li>
 						<li>Méthode à placer dans la classe d'une page.</li>
 						<li>Renvoie True or False selon condition(s).</li>
 						<li>Si la méthode renvoie True la page est affichée, si elle renvoie False la page n'est pas
 							affichée.</li>
+					</ul>
+					<p>
+						<code>
+							def is_displayed(player: Player): <br>
+							&nbsp;&nbsp;return player.etudiant
+						</code>
+					</p>
+					<p>
+						La page est affichée uniquement si le participant est étudiant.
+					</p>
+				</section>
+				<section>
+					<h3>Pratique</h3>
+					<ul>
+						<li>Développer une seconde page à afficher après le questionnaire démographique.</li>
+						<li>Si le participant est étudiant, développer le questionnaire suivant. <br>
+							<img src="img/questionnaire_etudiant.png">
+						</li>
 					</ul>
 				</section>
 			</section>

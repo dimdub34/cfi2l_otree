@@ -650,9 +650,36 @@
 
 						</li>
 					</ul>
+					<p>
+						<u>Exemple</u> : Supposons une première page de questionnaire qui demande au participant s'il
+						préfère
+						les fruits rouges ou les fruits exotiques; et une seconde page qui demande "Parmi ces fruits
+						lequel préférez-vous ?". La liste proposée sur la seconde page doit tenir compte de la réponse à
+						la première page. Ainsi, si à la première page le participant a déclaré préférer les fruits
+						rouges alors la liste de la seconde page sera composée de fruits rouges, tandis que si sur la
+						première page le participant a déclaré préférer les fruits exotiques, la liste de la seconde
+						page sera composée de fruits exotiques.
+					</p>
 				</section>
 				<section>
-					<h3>error_message</h3>
+					<p>
+						Supposons le champs fruit_prefere, il sera déclaré comme suit <br>
+						<code>fruit_prefere = models.StringField(label="Choisissez votre fruit préféré dans la liste")</code>
+					</p>
+					<p>
+						Au moment de la création du champs on ne sait pas si le participant préfère les fruits rouges ou
+						exotiques, donc cette liste sera créée ultérieurement grâce à la méthode fruit_prefere_choices
+						définie ci-dessous.
+					</p>
+					<p>
+						<code>
+							def fruit_prefere_choices(player: Player): <br>
+							&nbsp;&nbsp;if player.preference_fruit == "rouge": <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;return ["fraise", "framboise", "mirtille"] <br>
+							&nbsp;&nbsp;elif player.preference_fruit == "exotique": <br>
+							&nbsp;&nbsp;&nbsp;&nbsp;return ["ananas", "fruit de la passion", "grenade"] <br>
+						</code>
+					</p>
 				</section>
 			</section>
 
